@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./index.css">
+
+</head>
+
+<body>
+    <header>
+        <h1>Pomodoro Timer</h1>
+    </header>
+    <main class="container-fluid">
+        <div class="row" id="app">
+            <div class="row" id="controls">
+                <div class="col-xs-6 d-flex justify-content-between">
+                    <div id="session-label">Session Length</div>
+                    <div id="session-length">25</div>
+                    <div class="button-container">
+                        <button id="session-decrement"><i class="fas fa-arrow-down"></i></button>
+                        <button id="session-increment"><i class="fas fa-arrow-up"></i></button>
+
+                    </div>
+                </div>
+                <div class="col-xs-6 d-flex justify-content-between">
+                    <div id="break-label">Break Length</div>
+                    <div id="break-length">5</div>
+                    <div class="button-container">
+                        <button id="break-decrement"><i class="fas fa-arrow-down"></i></button>
+                        <button id="break-increment"><i class="fas fa-arrow-up"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class='text-center' id="timer-label">SESSION</h2>
+                    <div id="time-left" class="text-center">HH:SS</div>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn-block" id="start_stop">Start</button>
+                <button class="btn-block" id="reset">Reset</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Copyright &copy AndrejBerezni 2023</p>
+    </footer>
+
+</body>
+
+</html>
