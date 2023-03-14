@@ -20,6 +20,7 @@ body {
     height: 100vh;
     background-color: var(--gray);
     font-family: var(--text);
+
 }
 
 header, footer {
@@ -32,6 +33,7 @@ header, footer {
 
 main {
     flex: 1;
+
 }
 
 .fas {
@@ -44,7 +46,7 @@ main {
 }
 
 #app {
-    margin: 10vh auto;
+    margin: 10vh 0;
     padding: 1vh 1.5vw;
     border: 3px solid var(--dred);
     background-color: var(--white);
@@ -130,7 +132,14 @@ main {
     scale: 1.02;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1080px) {
+
+    #break-label, #session-label {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 780px) {
 
     #break-label, #session-label {
         font-size: 1rem;
