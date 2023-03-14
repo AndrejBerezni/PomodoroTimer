@@ -26,13 +26,12 @@ header, footer {
     background-color: var(--dred);
     color: var(--white);
     text-align: center;
+    padding: 5px;
 
 }
 
 main {
     flex: 1;
-    padding-top: 15vh;
-    min-width: 60vw;
 }
 
 .fas {
@@ -45,15 +44,95 @@ main {
 }
 
 #app {
-    padding: 1vh 1vw;
+    margin: 10vh auto;
+    padding: 1vh 1.5vw;
     border: 3px solid var(--dred);
     background-color: var(--white);
     box-shadow: 0px 3px 5px black;
+    min-width: 40vw;
+}
+
+#controls {
+    padding: 2vh 1vw;
+    background-color: var(--lred);
+    color: var(--white);
 }
 .col-xs-6 {
     display: flex;
     flex-direction: column;
-    min-height: 10vh;
-    justify-content: center;
+    min-height: 20vh;
+    justify-content: space-between;
     align-items: center;
+    gap: 1.5vh;
+}
+
+#break-label, #session-label {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+#break-length, #session-length {
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    padding: 5px;
+    font-size: 3.5rem;
+    font-weight: bold;
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    transition: 1s;
+}
+
+#break-length:hover, #session-length:hover {
+    scale: 1.2;
+}
+
+.col-xs-6 button {
+    border: 2px solid var(--dred);
+    border-radius: 5px;
+    padding: 7px;
+    background-color: var(--white);
+    transition: .3s;
+}
+
+.col-xs-6 button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 3px var(--white);
+}
+
+#timer-label {
+    font-weight: bold;
+}
+
+#time-left {
+    font-size: 4rem;
+    background-color: var(--lred);
+    color: var(--white);
+    border: 5px solid var(--black);
+    margin: 1.5vh 0;
+    padding: 2vh;
+}
+
+.btn-block {
+    font-size: 1.6rem;
+    background-color: var(--dred);
+    color: var(--white);
+    font-weight: bold;
+    padding: 5px;
+    border: none;
+    margin: 10px auto;
+    transition: .3s;
+}
+
+.btn-block:hover {
+    color:var(--black);
+    background-color: var(--gray);
+    scale: 1.02;
+}
+
+@media (max-width: 800px) {
+
+    #break-label, #session-label {
+        font-size: 1rem;
+    }
 }
