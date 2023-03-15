@@ -84,11 +84,12 @@ function runTimer() {
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
         timerDisplay.textContent = `${minutes} : ${seconds}`;
-        if (--timer < 0 && isBreak == false) {
+        timer --;
+        if (timer < 0 && isBreak == false) {
             timer = breakValue * 60;
             timerLabel.innerText = 'BREAK';
             isBreak = !isBreak;
-        } else if (--timer < 0 && isBreak == true) {
+        } else if (timer < 0 && isBreak == true) {
             timer = sessionValue * 60;
             timerLabel.innerText = 'SESSION';
             isBreak = !isBreak;
