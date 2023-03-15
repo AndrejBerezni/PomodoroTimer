@@ -1,17 +1,3 @@
-// Check how to implement this function:
-// function changeValue(targetText, operation, targetValue) {
-//     if (operation == 'decrement' && targetValue > 0) {
-//         targetValue--;
-//         targetText.innerText = `${targetValue}`;
-//     } else if (operation == 'increment' && targetValue < 60) {
-//         targetValue++;
-//         targetText.innerText = `${targetValue}`;
-//         console.log(targetValue)
-//     }
-// }
-
-// incrementSession.addEventListener('click', () => changeValue(sessionLength, 'increment', sessionValue))
-
 const sessionLength = document.getElementById('session-length');
 const breakLength = document.getElementById('break-length');
 const incrementSession = document.getElementById('session-increment');
@@ -22,8 +8,6 @@ const timerDisplay = document.getElementById('time-left');
 const timerLabel = document.getElementById('timer-label');
 const startStop = document.getElementById('start_stop');
 const reset = document.getElementById('reset');
-// const minutesDisplay = document.getElementById('minutes');
-// const secondsDisplay = document.getElementById('seconds');
 
 // Initialize values:
 let sessionValue = 25;
@@ -75,38 +59,60 @@ breakLength.addEventListener('click', () => {
 
 
 //Timer:
+let isBreak = false;
+let isTimerRunning = false;
+let remainingTime = 0;
+let timerInterval = null;
 
 function runTimer() {
-    let timer = sessionValue * 60;
-    setInterval(() => {
+    if (timerInterval !== null) {
+        clearInterval(timerInterval);
+    }
+    timerInterval = setInterval(() => {
         let minutes = parseInt(timer / 60, 10);
         let seconds = parseInt(timer % 60, 10);
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
         timerDisplay.textContent = `${minutes} : ${seconds}`;
-        timer --;
-        if (timer < 0 && isBreak == false) {
+        timer--;
+        if (timer < 0 && isBreak === false) {
             timer = breakValue * 60;
             timerLabel.innerText = 'BREAK';
             isBreak = !isBreak;
-        } else if (timer < 0 && isBreak == true) {
+        } else if (timer < 0 && isBreak === true) {
             timer = sessionValue * 60;
             timerLabel.innerText = 'SESSION';
             isBreak = !isBreak;
         }
     }, 1000);
 }
-
-let isBreak = false;
-let isTimerRunning = false;
-
 startStop.addEventListener('click', () => {
-    if (isTimerRunning == false) {
-        isTimerRunning = !isTimerRunning;
+    if (timerInterval !== null) {
+        clearInterval(timerInterval);
+        remainingTime = timer;
+        timerInterval = null;
+        startStop.innerText = 'START';
+    } else {
+        if (remainingTime > 0) {
+            timer = remainingTime;
+            remainingTime = 0;
+        } else {
+            timer = sessionValue * 60;
+        }
         runTimer();
         startStop.innerText = 'STOP';
-        
-    } else if (isTimerRunning == true) {
-        startStop.innerText = 'START';
     }
+});
+
+//Reset button:
+
+reset.addEventListener('click', () => {
+    clearInterval(timerInterval);
+    isBreak = false;
+    isTimerRunning = false;
+    remainingTime = 0;
+    timerInterval = null;
+    startStop.innerText = 'START';
+    timerLabel.innerText = 'SESSION';
+    timerDisplay.textContent = `${sessionValue < 10 ? "0" + sessionValue : sessionValue} : 00`;
 })
