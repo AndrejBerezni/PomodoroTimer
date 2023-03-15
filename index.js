@@ -19,6 +19,7 @@ const decrementSession = document.getElementById('session-decrement');
 const incrementBreak = document.getElementById('break-increment');
 const decrementBreak = document.getElementById('break-decrement');
 const timerDisplay = document.getElementById('time-left');
+const timerLabel = document.getElementById('timer-label');
 const startStop = document.getElementById('start_stop');
 const reset = document.getElementById('reset');
 // const minutesDisplay = document.getElementById('minutes');
@@ -41,7 +42,7 @@ incrementSession.addEventListener('click', () => {
 });
 
 decrementSession.addEventListener('click', () => {
-    if (sessionValue > 0) {
+    if (sessionValue > 1) {
         sessionValue--;
         sessionLength.innerText = `${sessionValue}`;
     }
@@ -55,7 +56,7 @@ incrementBreak.addEventListener('click', () => {
 });
 
 decrementBreak.addEventListener('click', () => {
-    if (breakValue > 0) {
+    if (breakValue > 1) {
         breakValue--;
         breakLength.innerText = `${breakValue}`;
     }
@@ -75,23 +76,36 @@ breakLength.addEventListener('click', () => {
 
 //Timer:
 
-function runTimer(duration) {
-    let timer = duration;
-    let minutes, seconds; 
+function runTimer() {
+    let timer = sessionValue * 60;
     setInterval(() => {
-      minutes = parseInt(timer / 60, 10);
-      seconds = parseInt(timer % 60, 10); 
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-      timerDisplay.textContent = `${minutes} : ${seconds}`; 
-      if (--timer < 0) {
-        timer = duration;
-      }
+        let minutes = parseInt(timer / 60, 10);
+        let seconds = parseInt(timer % 60, 10);
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        timerDisplay.textContent = `${minutes} : ${seconds}`;
+        if (--timer < 0 && isBreak == false) {
+            timer = breakValue * 60;
+            timerLabel.innerText = 'BREAK';
+            isBreak = !isBreak;
+        } else if (--timer < 0 && isBreak == true) {
+            timer = sessionValue * 60;
+            timerLabel.innerText = 'SESSION';
+            isBreak = !isBreak;
+        }
     }, 1000);
-  }
+}
 
-startStop.addEventListener('click', ()=> {
-    const minutes = sessionValue;
-    runTimer(minutes * 60)
+let isBreak = false;
+let isTimerRunning = false;
+
+startStop.addEventListener('click', () => {
+    if (isTimerRunning == false) {
+        isTimerRunning = !isTimerRunning;
+        runTimer();
+        startStop.innerText = 'STOP';
+        
+    } else if (isTimerRunning == true) {
+        startStop.innerText = 'START';
+    }
 })
-  
