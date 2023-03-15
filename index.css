@@ -146,3 +146,166 @@ main {
     }
 }
 
+
+/* Animation */
+.tomatoes{
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.tomatoes li:nth-child(odd){
+    position: absolute;
+    display: block;
+    list-style: none;
+    animation: gift 25s linear infinite;
+    bottom: -150px;
+    width: 50px;
+    height: 50px;
+}
+.tomatoes li:nth-child(even){
+    position: absolute;
+    display: block;
+    list-style: none;
+    animation: gift-back 25s linear infinite;
+    bottom: -150px;
+    width: 50px;
+    height: 50px;
+}
+
+.tomatoes li:nth-child(1) {
+    left: 25%;
+    animation-delay: 0s;
+}
+
+.tomatoes li:nth-child(1) img {
+    width: 18vw;
+}
+
+
+.tomatoes li:nth-child(2){
+    left: 10%;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.tomatoes li:nth-child(2) img {
+    width: 9vw;
+}
+
+.tomatoes li:nth-child(3){
+    left: 70%;
+    animation-delay: 4s;
+}
+
+.tomatoes li:nth-child(3) img {
+    width: 16vw;
+}
+
+.tomatoes li:nth-child(4){
+    left: 40%;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.tomatoes li:nth-child(4) img {
+    width: 15vw;
+}
+
+.tomatoes li:nth-child(5){
+    left: 65%;
+    animation-delay: 0s;
+}
+
+.tomatoes li:nth-child(5) img {
+    width: 14vw;
+}
+
+.tomatoes li:nth-child(6){
+    left: 75%;
+    animation-delay: 1s;
+}
+
+.tomatoes li:nth-child(6) img {
+    width: 13vw;
+
+}
+
+.tomatoes li:nth-child(7){
+    left: 35%;
+    animation-delay: 7s;
+}
+
+.tomatoes li:nth-child(7) img {
+    width: 12vw;
+}
+
+.tomatoes li:nth-child(8){
+    left: 50%;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.tomatoes li:nth-child(8) img {
+    width: 11vw;
+}
+
+.tomatoes li:nth-child(9){
+    left: 20%;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.tomatoes li:nth-child(9) img {
+    width: 10vw;
+}
+
+.tomatoes li:nth-child(10){
+    left: 85%;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+.tomatoes li:nth-child(10) img {
+    width: 17vw;
+}
+
+
+
+@keyframes gift {
+
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.6;
+        border-radius: 0;
+    }
+
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+
+}
+
+@keyframes gift-back {
+
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.6;
+        border-radius: 0;
+    }
+
+    100%{
+        transform: translateY(-1000px) rotate(-720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+
+}
