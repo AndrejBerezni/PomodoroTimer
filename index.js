@@ -8,6 +8,8 @@ const timerDisplay = document.getElementById('time-left');
 const timerLabel = document.getElementById('timer-label');
 const startStop = document.getElementById('start_stop');
 const reset = document.getElementById('reset');
+const beep = document.getElementById('beep');
+
 
 // Initialize values:
 let sessionValue = 25;
@@ -75,14 +77,18 @@ function runTimer() {
         seconds = seconds < 10 ? "0" + seconds : seconds;
         timerDisplay.textContent = `${minutes} : ${seconds}`;
         timer--;
-        if (timer < 0 && isBreak === false) {
+        if (timer <= 0 && isBreak === false) {
             timer = breakValue * 60;
             timerLabel.innerText = 'BREAK';
             isBreak = !isBreak;
-        } else if (timer < 0 && isBreak === true) {
+            beep.currentTime = 0;
+            beep.play();
+        } else if (timer <= 0 && isBreak === true) {
             timer = sessionValue * 60;
             timerLabel.innerText = 'SESSION';
             isBreak = !isBreak;
+            beep.currentTime = 0;
+            beep.play();
         }
     }, 1000);
 }
@@ -112,6 +118,7 @@ reset.addEventListener('click', () => {
     isTimerRunning = false;
     remainingTime = 0;
     timerInterval = null;
+    beep.currentTime = 0;
     startStop.innerText = 'START';
     timerLabel.innerText = 'SESSION';
     timerDisplay.textContent = `${sessionValue < 10 ? "0" + sessionValue : sessionValue} : 00`;
