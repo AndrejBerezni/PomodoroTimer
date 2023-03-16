@@ -77,13 +77,13 @@ function runTimer() {
         seconds = seconds < 10 ? "0" + seconds : seconds;
         timerDisplay.textContent = `${minutes} : ${seconds}`;
         timer--;
-        if (timer <= 0 && isBreak === false) {
+        if (timer < 0 && isBreak === false) {
             timer = breakValue * 60;
             timerLabel.innerText = 'BREAK';
             isBreak = !isBreak;
             beep.currentTime = 0;
             beep.play();
-        } else if (timer <= 0 && isBreak === true) {
+        } else if (timer < 0 && isBreak === true) {
             timer = sessionValue * 60;
             timerLabel.innerText = 'SESSION';
             isBreak = !isBreak;
